@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quizes",
+  "info": {
+    "singularName": "quize",
+    "pluralName": "quizes",
+    "displayName": "quize",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Quiz_title": {
+      "type": "string"
+    },
+    "coures": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::elitecoures.elitecoures",
+      "mappedBy": "quize"
+    },
+    "questions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::question.question",
+      "mappedBy": "quize"
+    }
+  }
+}

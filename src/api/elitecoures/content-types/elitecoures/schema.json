@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coures",
+  "info": {
+    "singularName": "elitecoures",
+    "pluralName": "coures",
+    "displayName": "coures",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "CouresDescription": {
+      "type": "string"
+    },
+    "NameOfCreator": {
+      "type": "string"
+    },
+    "scienceImage": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "moreIAnfoboutScientist": {
+      "type": "string"
+    },
+    "videoCoures": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "Link_Simulations_PHET": {
+      "type": "string",
+      "unique": true
+    },
+    "quize": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::quize.quize",
+      "inversedBy": "coures"
+    }
+  }
+}

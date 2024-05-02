@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "questions",
+  "info": {
+    "singularName": "question",
+    "pluralName": "questions",
+    "displayName": "question",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "questions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "question-fro-quizes.question"
+    },
+    "question_title": {
+      "type": "string"
+    },
+    "quize": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::quize.quize",
+      "inversedBy": "questions"
+    }
+  }
+}

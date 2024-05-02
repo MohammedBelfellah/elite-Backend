@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_question_fro_quizes_questions",
+  "info": {
+    "displayName": "question",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "questions_text": {
+      "type": "string"
+    },
+    "option_01": {
+      "type": "string"
+    },
+    "option_02": {
+      "type": "string"
+    },
+    "option_03": {
+      "type": "string"
+    },
+    "correct_option": {
+      "type": "enumeration",
+      "enum": [
+        "option_01",
+        "option_02",
+        "option_03"
+      ]
+    }
+  }
+}
