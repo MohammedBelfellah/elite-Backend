@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chapiters",
+  "info": {
+    "singularName": "chapiter",
+    "pluralName": "chapiters",
+    "displayName": "chapiter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "video": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "coure": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::elitecoures.elitecoures",
+      "inversedBy": "chapiter"
+    },
+    "user_chapiters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::user-chapiter.user-chapiter",
+      "mappedBy": "chapiters"
+    }
+  }
+}

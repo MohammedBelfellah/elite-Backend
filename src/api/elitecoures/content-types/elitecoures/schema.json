@@ -32,14 +32,6 @@
     "moreIAnfoboutScientist": {
       "type": "string"
     },
-    "videoCoures": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "videos"
-      ]
-    },
     "Link_Simulations_PHET": {
       "type": "string",
       "unique": true
@@ -49,6 +41,25 @@
       "relation": "manyToOne",
       "target": "api::quize.quize",
       "inversedBy": "coures"
+    },
+    "Attachement_PDF": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "Is_popular_courses": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "chapiter": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::chapiter.chapiter",
+      "mappedBy": "coure"
     }
   }
 }

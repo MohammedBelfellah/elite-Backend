@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_chapiters",
+  "info": {
+    "singularName": "user-chapiter",
+    "pluralName": "user-chapiters",
+    "displayName": "user_chapiter",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "chapiters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::chapiter.chapiter",
+      "inversedBy": "user_chapiters"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_chapiters"
+    },
+    "isCompleted": {
+      "type": "boolean"
+    }
+  }
+}

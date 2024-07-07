@@ -71,6 +71,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "user_chapiters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::user-chapiter.user-chapiter",
+      "mappedBy": "users_permissions_users"
     }
   }
 }

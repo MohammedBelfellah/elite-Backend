@@ -26,6 +26,10 @@
       "relation": "oneToMany",
       "target": "api::question.question",
       "mappedBy": "quize"
+    },
+    "isCompleted": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

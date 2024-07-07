@@ -362,126 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiElitecouresElitecoures extends Schema.CollectionType {
-  collectionName: 'coures';
-  info: {
-    singularName: 'elitecoures';
-    pluralName: 'coures';
-    displayName: 'coures';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    CouresDescription: Attribute.String;
-    NameOfCreator: Attribute.String;
-    scienceImage: Attribute.Media;
-    moreIAnfoboutScientist: Attribute.String;
-    videoCoures: Attribute.Media;
-    Link_Simulations_PHET: Attribute.String & Attribute.Unique;
-    quize: Attribute.Relation<
-      'api::elitecoures.elitecoures',
-      'manyToOne',
-      'api::quize.quize'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::elitecoures.elitecoures',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::elitecoures.elitecoures',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiQuestionQuestion extends Schema.CollectionType {
-  collectionName: 'questions';
-  info: {
-    singularName: 'question';
-    pluralName: 'questions';
-    displayName: 'question';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    questions: Attribute.Component<'question-fro-quizes.question', true>;
-    question_title: Attribute.String;
-    quize: Attribute.Relation<
-      'api::question.question',
-      'manyToOne',
-      'api::quize.quize'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::question.question',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::question.question',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiQuizeQuize extends Schema.CollectionType {
-  collectionName: 'quizes';
-  info: {
-    singularName: 'quize';
-    pluralName: 'quizes';
-    displayName: 'quize';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Quiz_title: Attribute.String;
-    coures: Attribute.Relation<
-      'api::quize.quize',
-      'oneToMany',
-      'api::elitecoures.elitecoures'
-    >;
-    questions: Attribute.Relation<
-      'api::quize.quize',
-      'oneToMany',
-      'api::question.question'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::quize.quize',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::quize.quize',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -891,6 +771,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     profileImage: Attribute.Media;
+    user_chapiters: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::user-chapiter.user-chapiter'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -908,6 +793,216 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiChapiterChapiter extends Schema.CollectionType {
+  collectionName: 'chapiters';
+  info: {
+    singularName: 'chapiter';
+    pluralName: 'chapiters';
+    displayName: 'chapiter';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    video: Attribute.Media & Attribute.Required;
+    coure: Attribute.Relation<
+      'api::chapiter.chapiter',
+      'oneToOne',
+      'api::elitecoures.elitecoures'
+    >;
+    user_chapiters: Attribute.Relation<
+      'api::chapiter.chapiter',
+      'manyToMany',
+      'api::user-chapiter.user-chapiter'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chapiter.chapiter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chapiter.chapiter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiElitecouresElitecoures extends Schema.CollectionType {
+  collectionName: 'coures';
+  info: {
+    singularName: 'elitecoures';
+    pluralName: 'coures';
+    displayName: 'coures';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    CouresDescription: Attribute.String;
+    NameOfCreator: Attribute.String;
+    scienceImage: Attribute.Media;
+    moreIAnfoboutScientist: Attribute.String;
+    Link_Simulations_PHET: Attribute.String & Attribute.Unique;
+    quize: Attribute.Relation<
+      'api::elitecoures.elitecoures',
+      'manyToOne',
+      'api::quize.quize'
+    >;
+    Attachement_PDF: Attribute.Media & Attribute.Required;
+    Is_popular_courses: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    chapiter: Attribute.Relation<
+      'api::elitecoures.elitecoures',
+      'oneToOne',
+      'api::chapiter.chapiter'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::elitecoures.elitecoures',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::elitecoures.elitecoures',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiQuestionQuestion extends Schema.CollectionType {
+  collectionName: 'questions';
+  info: {
+    singularName: 'question';
+    pluralName: 'questions';
+    displayName: 'question';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    questions: Attribute.Component<'question-fro-quizes.question', true>;
+    question_title: Attribute.String;
+    quize: Attribute.Relation<
+      'api::question.question',
+      'manyToOne',
+      'api::quize.quize'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::question.question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::question.question',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiQuizeQuize extends Schema.CollectionType {
+  collectionName: 'quizes';
+  info: {
+    singularName: 'quize';
+    pluralName: 'quizes';
+    displayName: 'quize';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Quiz_title: Attribute.String;
+    coures: Attribute.Relation<
+      'api::quize.quize',
+      'oneToMany',
+      'api::elitecoures.elitecoures'
+    >;
+    questions: Attribute.Relation<
+      'api::quize.quize',
+      'oneToMany',
+      'api::question.question'
+    >;
+    isCompleted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::quize.quize',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::quize.quize',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserChapiterUserChapiter extends Schema.CollectionType {
+  collectionName: 'user_chapiters';
+  info: {
+    singularName: 'user-chapiter';
+    pluralName: 'user-chapiters';
+    displayName: 'user_chapiter';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    chapiters: Attribute.Relation<
+      'api::user-chapiter.user-chapiter',
+      'manyToMany',
+      'api::chapiter.chapiter'
+    >;
+    users_permissions_users: Attribute.Relation<
+      'api::user-chapiter.user-chapiter',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    isCompleted: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-chapiter.user-chapiter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-chapiter.user-chapiter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -918,9 +1013,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::elitecoures.elitecoures': ApiElitecouresElitecoures;
-      'api::question.question': ApiQuestionQuestion;
-      'api::quize.quize': ApiQuizeQuize;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -929,6 +1021,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::chapiter.chapiter': ApiChapiterChapiter;
+      'api::elitecoures.elitecoures': ApiElitecouresElitecoures;
+      'api::question.question': ApiQuestionQuestion;
+      'api::quize.quize': ApiQuizeQuize;
+      'api::user-chapiter.user-chapiter': ApiUserChapiterUserChapiter;
     }
   }
 }
