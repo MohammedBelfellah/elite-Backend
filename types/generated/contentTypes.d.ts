@@ -379,13 +379,15 @@ export interface ApiElitecouresElitecoures extends Schema.CollectionType {
     NameOfCreator: Attribute.String;
     scienceImage: Attribute.Media;
     moreIAnfoboutScientist: Attribute.String;
-    videoCoures: Attribute.Media;
     Link_Simulations_PHET: Attribute.String & Attribute.Unique;
     quize: Attribute.Relation<
       'api::elitecoures.elitecoures',
       'manyToOne',
       'api::quize.quize'
     >;
+    Attachement_PDF: Attribute.Media;
+    Is_popular_courses: Attribute.Boolean & Attribute.DefaultTo<false>;
+    chapiters: Attribute.Component<'question-fro-quizes.chapiter', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

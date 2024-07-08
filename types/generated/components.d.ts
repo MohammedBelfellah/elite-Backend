@@ -1,5 +1,19 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface QuestionFroQuizesChapiter extends Schema.Component {
+  collectionName: 'components_question_fro_quizes_chapiters';
+  info: {
+    displayName: 'chapiter';
+    icon: 'layer';
+    description: '';
+  };
+  attributes: {
+    chapiter_video: Attribute.Media;
+    isComplted: Attribute.Boolean & Attribute.DefaultTo<false>;
+    chapiter_title: Attribute.String;
+  };
+}
+
 export interface QuestionFroQuizesQuestion extends Schema.Component {
   collectionName: 'components_question_fro_quizes_questions';
   info: {
@@ -21,6 +35,7 @@ export interface QuestionFroQuizesQuestion extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'question-fro-quizes.chapiter': QuestionFroQuizesChapiter;
       'question-fro-quizes.question': QuestionFroQuizesQuestion;
     }
   }

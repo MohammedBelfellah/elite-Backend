@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_question_fro_quizes_chapiters",
+  "info": {
+    "displayName": "chapiter",
+    "icon": "layer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "chapiter_video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos"
+      ]
+    },
+    "isComplted": {
+      "type": "boolean",
+      "default": false
+    },
+    "chapiter_title": {
+      "type": "string"
+    }
+  }
+}

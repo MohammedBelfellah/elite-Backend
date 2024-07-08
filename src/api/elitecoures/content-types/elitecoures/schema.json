@@ -32,14 +32,6 @@
     "moreIAnfoboutScientist": {
       "type": "string"
     },
-    "videoCoures": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "videos"
-      ]
-    },
     "Link_Simulations_PHET": {
       "type": "string",
       "unique": true
@@ -49,6 +41,23 @@
       "relation": "manyToOne",
       "target": "api::quize.quize",
       "inversedBy": "coures"
+    },
+    "Attachement_PDF": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "Is_popular_courses": {
+      "type": "boolean",
+      "default": false
+    },
+    "chapiters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "question-fro-quizes.chapiter"
     }
   }
 }
